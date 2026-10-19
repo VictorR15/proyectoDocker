@@ -28,7 +28,6 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: react_frontend
-    restart: unless-stopped
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -40,7 +39,6 @@ services:
   mariadb:
     image: mariadb:10.11
     container_name: mariadb_db
-    restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}
@@ -56,7 +54,6 @@ services:
   mailpit:
     image: axllent/mailpit:latest
     container_name: mailpit_mail
-    restart: unless-stopped
     ports:
       - "1025:1025"  # Puerto SMTP
       - "8025:8025"  # Interfaz Web de Mailpit
